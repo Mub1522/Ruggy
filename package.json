@@ -1,0 +1,42 @@
+{
+    "name": "ruggy",
+    "version": "0.1.0",
+    "description": "A simple, fast embedded database for Node.js backed by Rust",
+    "main": "src/index.js",
+    "types": "index.d.ts",
+    "keywords": [
+        "database",
+        "embedded",
+        "rust",
+        "ffi",
+        "nosql",
+        "document-store"
+    ],
+    "files": [
+        "src/",
+        "lib/",
+        "assets/",
+        "index.d.ts",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md"
+    ],
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "scripts": {
+        "test": "node test/run-all.js",
+        "bench": "node benchmark/run.js"
+    },
+    "dependencies": {
+        "koffi": "^2.8.0",
+        "js-yaml": "^4.1.0"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/ruggy"
+    },
+    "author": "Andres Diaz",
+    "license": "MIT"
+}
