@@ -2,18 +2,18 @@
   <img src="https://raw.githubusercontent.com/Mub1522/ruggy/main/assets/icon.jpeg" alt="Ruggy Logo" width="200"/>
 </div>
 
-# Ruggy
+<h1 style="text-align: center;">Ruggy</h1>
 
-A simple, fast embedded database for Node.js backed by Rust.
+<p style="text-align: center;">A simple, fast embedded database for Node.js backed by Rust.</p>
 
 ## Features
 
-- 🚀 **Fast** - Native Rust backend with FFI bindings
-- 📦 **Embedded** - No separate database server required
-- 🔍 **Simple** - Clean, intuitive API
-- 💾 **Persistent** - Data stored in append-only files
-- 🔒 **Type-Safe** - Full TypeScript support
-- ⚙️ **Configurable** - YAML configuration for flexible deployment
+- **Fast** - Native Rust backend with FFI bindings
+- **Embedded** - No separate database server required
+- **Simple** - Clean, intuitive API
+- **Persistent** - Data stored in append-only files
+- **Type-Safe** - Full TypeScript support
+- **Configurable** - YAML configuration for flexible deployment
 
 ## Installation
 
@@ -45,7 +45,7 @@ const results = users.find('email', 'alice@example.com');
 db.close();
 ```
 
-## ⚠️ Platform Support
+## Platform Support
 
 | Platform | Status | Pre-built Binaries |
 |----------|--------|-------------------|
