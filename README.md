@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/ruggy/main/lib/node/assets/icon.jpeg" alt="Ruggy Logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/Mub1522/ruggy/main/assets/icon.jpeg" alt="Ruggy Logo" width="200"/>
 </div>
 
 # Ruggy
