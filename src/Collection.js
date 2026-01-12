@@ -2,6 +2,7 @@ const {
     ruggy_insert,
     ruggy_find_all,
     ruggy_find,
+    ruggy_find_op,
     ruggy_col_free,
     ruggy_str_free
 } = require('./bindings');
@@ -121,6 +122,45 @@ class RuggyCollection {
         const valueBuf = toCString(String(value));
 
         const resPtr = ruggy_find(this.#colPtr, fieldBuf, valueBuf);
+        if (!isValidPointer(resPtr)) {
+            return [];
+        }
+
+        const json = readCString(resPtr);
+        ruggy_str_free(resPtr);
+
+        try {
+            return JSON.parse(json);
+        } catch (error) {
+            console.error('Failed to parse JSON from Rust:', error);
+            return [];
+        }
+    }
+
+    /**
+     * Finds documents using a specific operator
+     * @param {string} field - Field name to search
+     * @param {*} value - Value to match (converted to string)
+     * @param {string} operator - Operator to use (e.g., '=', 'like', 'starts_with', 'ends_with')
+     * @returns {Array<Object>} - Array of matching documents
+     * @throws {Error} If collection is closed
+     */
+    findWithOperator(field, value, operator) {
+        this.#ensureOpen();
+
+        if (typeof field !== 'string' || !field) {
+            throw new Error('Field must be a non-empty string');
+        }
+
+        if (typeof operator !== 'string' || !operator) {
+            throw new Error('Operator must be a non-empty string');
+        }
+
+        const fieldBuf = toCString(field);
+        const valueBuf = toCString(String(value));
+        const opBuf = toCString(operator);
+
+        const resPtr = ruggy_find_op(this.#colPtr, fieldBuf, valueBuf, opBuf);
         if (!isValidPointer(resPtr)) {
             return [];
         }

@@ -161,6 +161,19 @@ Finds documents where field matches value.
 const adults = collection.find('age', '30');
 ```
 
+**`findWithOperator(field: string, value: any, operator: string): Array<Object>`**
+
+Finds documents using advanced operators.
+
+- **`=`**, **`==`**, **`eq`**: Exact match.
+- **`like`**, **`LIKE`**, **`contains`**: Partial match (case-sensitive).
+- **`starts_with`**: Matches the beginning of the string.
+- **`ends_with`**: Matches the end of the string.
+
+```javascript
+const results = collection.findWithOperator('name', 'App', 'like');
+```
+
 **`close(): void`**
 
 Closes the collection and releases resources.
@@ -255,6 +268,25 @@ const all = products.findAll();
 const electronics = products.find('category', 'electronics');
 
 // Close
+db.close();
+```
+
+### Advanced Searching
+
+```javascript
+const { RuggyDatabase } = require('ruggy');
+const db = new RuggyDatabase('./data');
+const products = db.collection('products');
+
+// Partial search (LIKE)
+const electronics = products.findWithOperator('category', 'elect', 'like');
+
+// Prefix search
+const startsWithA = products.findWithOperator('name', 'A', 'starts_with');
+
+// Suffix search
+const endsWithS = products.findWithOperator('name', 's', 'ends_with');
+
 db.close();
 ```
 

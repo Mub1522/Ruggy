@@ -17,6 +17,7 @@ const ruggy_col_free = lib.func('ruggy_col_free', 'void', ['void *']);
 const ruggy_insert = lib.func('ruggy_insert', 'void *', ['void *', 'string']);
 const ruggy_find_all = lib.func('ruggy_find_all', 'void *', ['void *']);
 const ruggy_find = lib.func('ruggy_find', 'void *', ['void *', 'string', 'string']);
+const ruggy_find_op = lib.func('ruggy_find_op', 'void *', ['void *', 'string', 'string', 'string']);
 
 // Memory management
 const ruggy_str_free = lib.func('ruggy_str_free', 'void', ['void *']);
@@ -30,5 +31,6 @@ module.exports = {
     ruggy_insert,
     ruggy_find_all,
     ruggy_find,
+    ruggy_find_op,
     ruggy_str_free
 };
