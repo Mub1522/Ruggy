@@ -70,13 +70,32 @@ export class RuggyCollection {
      */
     findAll(): Array<Record<string, any>>;
 
+    find(field: string, value: any): Array<Record<string, any>>;
+
     /**
-     * Finds documents matching a field-value pair
+     * Finds documents using advanced operators
      * @param field - Field name to search
      * @param value - Value to match
+     * @param operator - Operator to use (=, ==, eq, like, LIKE, contains, starts_with, ends_with)
      * @returns Array of matching documents
      */
-    find(field: string, value: any): Array<Record<string, any>>;
+    findWithOperator(field: string, value: any, operator: string): Array<Record<string, any>>;
+
+    /**
+     * Updates a specific field of a document found by its _id
+     * @param id - The _id of the document to update
+     * @param field - The field name to update
+     * @param value - The new value for the field
+     * @returns True if updated, false if not found or error
+     */
+    updateField(id: string, field: string, value: any): boolean;
+
+    /**
+     * Deletes a document by its _id
+     * @param id - The _id of the document to delete
+     * @returns True if deleted, false if not found or error
+     */
+    delete(id: string): boolean;
 
     /**
      * Closes the collection and frees native resources

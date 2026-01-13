@@ -1,6 +1,6 @@
 {
     "name": "ruggy",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A simple, fast embedded database for Node.js backed by Rust",
     "main": "src/index.js",
     "types": "index.d.ts",

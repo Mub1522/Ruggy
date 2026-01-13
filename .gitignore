@@ -37,6 +37,10 @@ Thumbs.db
 # Documentation
 docs/
 
-# Benchmark
+# Development
+rust/target/
+
+# Tests
 benchmark/
-rust/
+test/test.js
+test/test_data/

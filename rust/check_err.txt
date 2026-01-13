@@ -1,0 +1,29 @@
+    Checking ruggy_db v0.1.0 (C:\Users\USUARIO\Desktop\Ruggy\lib\node\Ruggy\rust)
+warning: unused import: `self`
+ --> src\collection.rs:1:15
+  |
+1 | use std::fs::{self, File, OpenOptions};
+  |               ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::sync::Arc`
+ --> src\collection.rs:4:5
+  |
+4 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src\collection.rs:50:47
+   |
+50 |             writer: Mutex::new(BufWriter::new(file)),
+   |                                -------------- ^^^^ expected `File`, found `&File`
+   |                                |
+   |                                arguments to this function are incorrect
+   |
+note: associated function defined here
+  --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\std\src\io\buffered\bufwriter.rs:93:12
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `ruggy_db` (lib) generated 2 warnings
+error: could not compile `ruggy_db` (lib) due to 1 previous error; 2 warnings emitted
