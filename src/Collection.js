@@ -3,6 +3,8 @@ const {
     ruggy_find_all,
     ruggy_find,
     ruggy_find_op,
+    ruggy_update_field,
+    ruggy_delete,
     ruggy_col_free,
     ruggy_str_free
 } = require('./bindings');
@@ -174,6 +176,52 @@ class RuggyCollection {
             console.error('Failed to parse JSON from Rust:', error);
             return [];
         }
+    }
+
+    /**
+     * Updates a specific field of a document found by its _id
+     * @param {string} id - The _id of the document to update
+     * @param {string} field - The field name to update
+     * @param {*} value - The new value for the field (will be JSON stringified)
+     * @returns {boolean} - True if updated, false if not found or error
+     * @throws {Error} If collection is closed or parameters are invalid
+     */
+    updateField(id, field, value) {
+        this.#ensureOpen();
+
+        if (typeof id !== 'string' || !id) {
+            throw new Error('ID must be a non-empty string');
+        }
+
+        if (typeof field !== 'string' || !field) {
+            throw new Error('Field must be a non-empty string');
+        }
+
+        const idBuf = toCString(id);
+        const fieldBuf = toCString(field);
+        const valueJson = JSON.stringify(value);
+        const valBuf = toCString(valueJson);
+
+        const result = ruggy_update_field(this.#colPtr, idBuf, fieldBuf, valBuf);
+        return result === 1;
+    }
+
+    /**
+     * Deletes a document by its _id
+     * @param {string} id - The _id of the document to delete
+     * @returns {boolean} - True if deleted, false if not found or error
+     * @throws {Error} If collection is closed or ID is invalid
+     */
+    delete(id) {
+        this.#ensureOpen();
+
+        if (typeof id !== 'string' || !id) {
+            throw new Error('ID must be a non-empty string');
+        }
+
+        const idBuf = toCString(id);
+        const result = ruggy_delete(this.#colPtr, idBuf);
+        return result === 1;
     }
 
     /**

@@ -174,6 +174,22 @@ Finds documents using advanced operators.
 const results = collection.findWithOperator('name', 'App', 'like');
 ```
 
+**`updateField(id: string, field: string, value: any): boolean`**
+
+Edits a specific field of a document identified by its `_id`.
+
+```javascript
+const success = collection.updateField('some-uuid-here', 'role', 'superadmin');
+```
+
+**`delete(id: string): boolean`**
+
+Deletes a document identified by its `_id`.
+
+```javascript
+const deleted = collection.delete('some-uuid-here');
+```
+
 **`close(): void`**
 
 Closes the collection and releases resources.
