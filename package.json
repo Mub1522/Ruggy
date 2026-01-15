@@ -2,6 +2,7 @@
     "name": "ruggy",
     "version": "0.2.0",
     "description": "A simple, fast embedded database for Node.js backed by Rust",
+    "homepage": "https://ruggy-topaz.vercel.app/",
     "main": "src/index.js",
     "types": "index.d.ts",
     "keywords": [
